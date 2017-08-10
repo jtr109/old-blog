@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle:
+title: jtr109 的自留地
+subtitle: 分享一切感兴趣的东西
 description:
-author: John Doe
+author: jtr109
 language:
 timezone:
 
@@ -77,4 +77,6 @@ theme: landscape
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repo: git@github.com:jtr109/jtr109.github.io.git
+  branch: master
