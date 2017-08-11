@@ -21,4 +21,4 @@ language: zh-Hans
 
 参考:
 
-- [使用Hexo踩坑小记](http://supermaryy.com/2016/07/02/Obstacles_I_Met_When_Using_Hexo/)
+- [使用Hexo踩坑小记](http://supermaryy.com/2016/07/02/Obstacles_I_Met_When_Using_Hexo/) (文章中还有其他使用技巧, 值得学习.)
