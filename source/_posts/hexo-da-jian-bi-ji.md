@@ -7,7 +7,15 @@ tags:
 
 ## 项目搭建
 
-项目搭建可以参考这篇 limedroid 的[Hexo 博客搭建指南](https://github.com/limedroid/HexoLearning#9-分类给文章归档). 这里对自己遇到的一些问题做一些相应的补充.
+项目搭建可以参考这篇 limedroid 的[Hexo 博客搭建指南](https://github.com/limedroid/HexoLearning).
+
+提供一条 bash one line:
+
+```bash
+$ hexo clean && hexo g && hexo s
+```
+
+上面的代码可以快捷地拉起项目服务器.
 
 ## 语言设置
 
@@ -19,6 +27,18 @@ tags:
 language: zh-Hans
 ```
 
+_需要注意, 修改好配置文件后请使用 `hexo clean && hexo g && hexo s` 重新编译后再查看效果._
+
 参考:
 
 - [使用Hexo踩坑小记](http://supermaryy.com/2016/07/02/Obstacles_I_Met_When_Using_Hexo/) (文章中还有其他使用技巧, 值得学习.)
+
+## 关于文章更新
+
+通常如果只是修改文章内容, 可以保持 hexo server 出于运行状态, 修改的内容会自动更新到我们本地的 `localhost:4000` 页面上. 不过在提交文章之前, 请务必再使用 `hexo g` 重新编译.
+
+同样提供一条代码:
+
+```bash
+$ hexo g && hexo d
+```
