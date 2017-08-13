@@ -38,3 +38,16 @@ categories:
 3. 提取到父页面的 `Page` 对其进行操作.
   - 这是目前找到最好的实现方法了, 可以解耦功能, 处理逻辑也相对清晰.
 
+具体操作方法:
+
+```javascript
+let pages = getCurrentPages()
+let currentPage = pages[pages.length -1]
+let prevPage = pages[pages.length -1]
+
+// prevPage 相当于上个页面中的 this 可以执行相关的一切操作.
+// 未尝试过其返回值, 使用时需做测试.
+prePage.setData({
+  mydata: 'any data'
+})
+```
