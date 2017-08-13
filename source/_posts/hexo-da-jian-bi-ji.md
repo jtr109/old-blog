@@ -42,3 +42,22 @@ _需要注意, 修改好配置文件后请使用 `hexo clean && hexo g && hexo s
 ```bash
 $ hexo g && hexo d
 ```
+
+## 编译报错
+
+在执行 `hexo clean && hexo g && hexo s` 时遇到过这样一个问题:
+
+```bash
+Error: Module version mismatch. Excepted 48, got 51.
+...
+```
+
+具体原因不详, 有说法是由于 node 更新导致版本不一致导致的. 下面提供几种处理方式, 或许能解决问题.
+
+1. `rm-rf node_modules && npm install --no-optional`
+2. `npm rebuild hexo`
+3. `npm uninstall hexo-cli -g && npm install hexo-cli  -g`
+
+### 参考
+
+- 基本所有解决方式都可以在[官方 issue](https://github.com/hexojs/hexo/issues/1939) 中找到解答.
