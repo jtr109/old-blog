@@ -61,3 +61,11 @@ Error: Module version mismatch. Excepted 48, got 51.
 ### 参考
 
 - 基本所有解决方式都可以在[官方 issue](https://github.com/hexojs/hexo/issues/1939) 中找到解答.
+
+## 页面请求极慢情况
+
+使用 `hexo s` 在本地跑项目的时候, 发现主页加载极慢, 即使加载成功, 进入新的页面也加载极慢.
+
+按理说本地请求静态文件是不可能有如此大的延迟的. 查看请求可以发现有一个对 fonts.googleapis.com 的请求, 经过了解, 发现这个请求是我们的 next theme 去请求的字体.
+
+由于众所周知的原因, 这个网址是不存在的. 所以我们需要指定正确的 font resource. 这里我选择了[中科大的镜像](https://lug.ustc.edu.cn/wiki/lug/services/googlefonts#使用) 经过尝试, 可以秒开主页.
