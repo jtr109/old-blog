@@ -59,3 +59,45 @@ tags:
 (cons '(1 2) '(3 4))
 ;Value 2: ((1 2) 3 4)
 ```
+
+## 字符串操作
+
+- `string-append`: 字符串拼接
+
+## 函数定义
+
+### 定义变量
+
+```Scheme
+(define vhello "Hello world!")
+```
+
+### 定义函数
+
+定义函数有两种方式, 一个是 lambda 一个是简写, 暂时不清楚两者的实际区别.
+
+```Scheme
+;;; 定义不带参数的函数
+
+; lambda 定义
+(define hello
+  (lambda ()
+    "Hello world!"))
+
+; 简写
+; (define (hello)
+;  ("Hello world!"))
+; 不成立
+
+;;; 定义带参数的函数
+
+; lambda
+(define hello
+  (lambda (name)
+    (string-append "Hello " name "!")))
+
+; 简写
+(define (hello name)
+  (string-append "Hello " name "!"))
+
+```
