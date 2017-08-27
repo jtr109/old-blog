@@ -122,6 +122,8 @@ tags:
 - `positive?`: 判断正数
 - `zero?`: 是否为 0
 - `negative?`: 判断负数
+- `odd?`: 奇数
+- `even?`: 偶数
 
 ### 原生函数
 
@@ -140,3 +142,61 @@ Scheme 中的 and 和 or 相对 C 类语言来说十分特殊:
 > 如果所有的参数的值都是 `#f` 的话，则返回最后一个参数的值。
 
 关于 `or` 逻辑的最后依据可以看作 or 会从左往右求职到第一个非 `#f` 的值, 如果没有 `#f` 会一直计算到最后一个参数, 并返回其结果 `#f`
+
+
+## 判断函数
+
+
+### `eq?`, `eqv?` and `equal?`
+
+- `eq?` 用于判断两个对象的地址,  适合用来比较两个变量.
+- `eqv?` 比较两个存储在内存中的对象的类型和值, 如果类型和值都一致的话就返回 `#t`. 适合用来比较数值, 但是 int 和 float 比较的返回为 `#f`
+- `equal?` 用于比较类似于表或者字符串一类的序列
+
+## 单一变量的判断
+
+- `pair?`: 如果对象为序对则返回#t
+- `list?`: 如果对象是一个表则返回#t。要小心的是空表’()是一个表但是不是一个序对
+- `null?`: 如果对象是空表’()的话就返回#t
+- `symbol?`: 如果对象是一个符号则返回#t
+- `char?`: 如果对象是一个字符则返回#t
+- `string?`: 如果对象是一个字符串则返回#t
+- `number?`: 如果对象是一个数字则返回#t
+- `complex?`: 如果对象是一个复数则返回#t
+- `real?`: 如果对象是一个实数则返回#t
+- `rational?`: 如果对象是一个有理数则返回#t
+- `integer?`: 如果对象是一个整数则返回#t
+- `exact?`: 如果对象不是一个浮点数的话则返回#t
+- `inexact?`: 如果对象是一个浮点数的话则返回#t
+
+## 字符比较
+
+`char=?`, `char<?`, `char>?`, `char<=?`, `char>=?`
+
+## 比较字符串
+
+`string=?`, `string-cli=?`
+
+## 关于循环和 lambda
+
+[第七章: 重复](https://deathking.github.io/yast-cn/contents/chapter7.html)(或[英文版](http://www.shido.info/lisp/scheme7_e.html))中有这样一道题:
+
+> 一个分别接受一个表 `ls` 和一个对象 `x` 的函数，该函数返回从 `ls` 中删除 `x` 后得到的表。
+
+后面给出了习题答案, 但是处理 "过于优雅", 对初学者不是很友好, 在[这个回答](https://stackoverflow.com/questions/1905222/how-to-delete-an-element-from-a-list-in-scheme#answer-15017744)中可以找到更易懂的解题方法. 下面把两种做一个对照:
+
+<script src="https://gist.github.com/jtr109/3f8577f07255af1e2b3d9b3fd09e8774.js"></script>
+
+### 浅谈 lambda
+
+原答案中最让人纠结的地方就是 if... lambda... 的组合使用, 由于之前本课程中没有过对于 lambda 的介绍, 只有 define 函数的时候提到过, 所以难免不清楚怎么使用. 其实可以在终端中动手试试, 你会发现 lambda 的用法如下:
+
+```Scheme
+((lambda (x) (* 2 x)) 1)
+;Value: 2
+
+((lambda (x y) (* 2 x (+ 1 y))) 2 3)
+;Value: 16
+```
+
+以上就是定义 lambda 匿名函数的方法, 在最外层的括号中有两个组成部分, 一个是定义 lambda 匿名函数的括号, 还有一组参数. 再对应到原书中的答案, 就可以发现原答案中是根据判断定义匿名函数, 并作用在 `remove x (cdr ls)` 上. 这样考虑就简单了许多.
