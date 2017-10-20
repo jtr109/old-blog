@@ -200,3 +200,40 @@ Scheme 中的 and 和 or 相对 C 类语言来说十分特殊:
 ```
 
 以上就是定义 lambda 匿名函数的方法, 在最外层的括号中有两个组成部分, 一个是定义 lambda 匿名函数的括号, 还有一组参数. 再对应到原书中的答案, 就可以发现原答案中是根据判断定义匿名函数, 并作用在 `remove x (cdr ls)` 上. 这样考虑就简单了许多.
+
+## named let and letrec
+
+named let 用于迭代, 而 letrec 用于递归.
+
+在 named let 中使用 `let` 初始化变量, 并在每次执行到命名的函数时循环. `letrec` 允许递归调用本身.
+
+从实践来看, named let 解决了 while 类循环在 scheme 中的实现, 但是 `letrec` 感觉只是为函数定义限制了作用域.
+
+
+## 映射
+
+```Scheme
+(map procedure list1 list2 ...)
+```
+
+`procedure` 是个与某个过程或 lambda 表达式相绑定的符号。作为参数的表的个数视 `procedure` 需要的参数而定。
+
+
+## Reduce
+
+关于 reduce 例子, 书里说的十分含糊, 经过资料查找, 可以发现示例来自[GNU MIT-Scheme](https://www.gnu.org/software/mit-scheme/documentation/mit-scheme-ref/Reduction-of-Lists.html)的官方文档, 这里可以了解到:
+
+> The argument initial is used only if list is empty;
+
+
+## Apply 函数
+
+这个函数类似于普通语言中对函数的使用方法, 由 `apply`, 固定数量的参数, 和不固定参数构成的表组成, 类似于 Python 中的 `func(*args, **kwargs)`
+
+## 词法闭包
+
+作用域与源代码书写方式一致的作用域称为“词法闭包（Lexical closure）”或“静态作用域（Static scope）”。
+
+## 关联表
+
+函数`assq`，`assv`，和`assoc`从关联表中搜寻一个项。这些函数从开始一步步搜索关联表。如果它们找到序对的`car`等于给定的`key`，就返回该序对。如果找不到函数返回`#f`。这些函数分别使用`eq?`，`eqv?`，和`equal?`比较键，这意味着`assq`最快，`assoc`最慢。
